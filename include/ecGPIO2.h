@@ -7,13 +7,13 @@
 
     Description      : GPIO Library. Distributed to Students for LAB_GPIO
     /----------------------------------------------------------------*/
-
-    #ifndef __ECGPIO2_H
-    #define __ECGPIO2_H
-
+    
     #include "stm32f411xe.h"
     #include "ecRCC2.h"
     #include "ecPinNames.h"
+
+    #ifndef __ECGPIO2_H
+    #define __ECGPIO2_H
 
     #define INPUT  0x00
     #define OUTPUT 0x01
@@ -26,6 +26,7 @@
     #define NO_PUPD      0x00
     #define PU           0x01
     #define PD           0x02
+    #define RESERVED     0x03
 
     #define PUSH_PULL    0x00
     #define OPEN_DRAIN   0x01
@@ -37,12 +38,6 @@
 
     #define LED_PIN 	PA_5
     #define BUTTON_PIN  PC_13
-
-    /*---------------------------------------------------------------- 
-                        [EXERCISE]
-    ---------------------------------------------------------------- */
-    // ADD MORE  MACRO related to GPIO 
-    // PU, PD, NO_PUPD, PUSH_PULL, LOW, MEDIUM, etc
 
 
 
