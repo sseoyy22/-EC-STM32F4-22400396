@@ -10,10 +10,10 @@ int main(void) {
 	// Inifinite Loop ----------------------------------------------------------
 	while(1){
 		GPIO_write(PA_5, LOW);
-		GPIO_write(PA_6, LOW);
+		GPIO_write(PA_6, HIGH);
 		GPIO_write(PA_7, HIGH);
 		GPIO_write(PB_6, HIGH);
-		GPIO_write(PC_7, LOW);
+		GPIO_write(PC_7, HIGH);
 		GPIO_write(PA_9, HIGH);
 		GPIO_write(PA_8, HIGH);
 		GPIO_write(PB_10, HIGH);

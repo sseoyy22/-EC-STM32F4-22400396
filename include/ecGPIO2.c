@@ -104,9 +104,66 @@ uint32_t GPIO_read(PinName_t pinName){
 // void digitalWrite(PinName_t pin, uint32_t value){}  // 아두이노에서의 코드 
 // uint32_t  digitalRead(PinName_t pin){}      // 위에서 만든 함수를 호출하면 되는거야 
 
-/*
-void pinMode(PinName_t pin, uint32_t mode) {
 
+
+// FND - JKIT board
+static PinName_t _fndPins[8];
+static PinName_t _fndSel[4];
+
+//Each led that has to light up gets a 1, every other led gets a 0
+//its in order  { (a,b,c,d,e,f,g,dp) }
+int numberFND[12][8]={
+    {1,1,1,1,1,1,0,0},		// zero
+    {0,1,1,0,0,0,0,0},		// one
+    {1,1,0,1,1,0,1,0},		// two
+	{1,1,1,1,0,0,1,0}, 	    // three
+    {0,1,1,0,0,1,1,0},      // four
+    {1,0,1,1,0,1,1,0},      // five 
+    {0,0,1,1,1,1,1,0},      // six
+	{1,1,1,0,0,0,0,0},      // seven
+	{1,1,1,1,1,1,1,0},      // eight 
+	{1,1,1,0,0,1,1,0},      // nine
+    {0,0,0,0,0,0,0,1},      //dot
+   	{0,0,0,0,0,0,0,0}		//blank
+};
+                  
+
+// Initialize DOUT pins for 7 segment leds
+void FND_init(PinName_t *pinFND){
+	for (int i=0; i<8; i++){
+		_fndPins[i] = pinFND[i];
+		GPIO_init(_fndPins[i], OUTPUT);
+	}
 }
-*/
+
+// Initialize select pins (FND0~FND3) as DOUT
+void FND_select_init(PinName_t *selectFND){	
+    for (int i=0; i<4; i++){
+		_fndSel[i] = selectFND[i]; 
+		GPIO_init(_fndSel[i], OUTPUT);
+	}
+}
+
+// Display a number 0 - 9 only
+void FND_display(uint8_t num){
+    for (int i=0; i<8; i++){
+		GPIO_write(_fndPins[i], numberFND[num][i]); 
+	}
+}
+
+// Select display: FND0 to FND3
+void FND_select(uint8_t digit){
+    for (int i=0; i<4; i++){
+		if(i == digit) {
+			GPIO_write(_fndSel[i], HIGH);
+		}
+		else {
+			GPIO_write(_fndSel[i], LOW); 
+		}
+	}       
+}
+
+
+
+
 

@@ -35,6 +35,13 @@ MCU:  STM32F411RE (Nucleo-64)
     + [GPIO_otype\(\)](#gpio_otype)
     + [GPIO_pupd\(\)](#gpio_pupd)
 
+  * [7-Segment Display](#7-segment-display)
+    + [Header File](#header-file-1)
+    + [FND_init()](#fnd_init)
+    + [FND_select_init()](#fnd_select_init)
+    + [FND_display()](#fnd_display)
+    + [FND_select()](#fnd_select)
+
 ---
 
 ## GPIO Digital InOut 
@@ -98,7 +105,6 @@ uint32_t  GPIO_read(PinName_t pinName);
 void pinMode(PinName_t pin, uint32_t mode);
 void digitalWrite(PinName_t pin, uint32_t value);
 uint32_t  digitalRead(PinName_t pin);
-
 
 #ifdef __cplusplus
 }
@@ -287,21 +293,146 @@ GPIO_pupd(BUTTON_PIN, PU);
 
 
 
-## Class or Header name
+## 7-Segment Display
 
-### Function Name
+### Header File
 
-```text
+ `#include "ecGPIO.h"`
+
+
+```c++
+// FND for JKIT board
+extern int numberFND[12][8];
+void FND_init(PinName_t *pinFND);
+void FND_select_init(PinName_t *selectFND);
+void FND_display(uint8_t num);
+void FND_select(uint8_t digit);
+```
+
+
+
+### FND_init\(\)
+Initializes the 8 GPIO pins connected to the FND segment pins.
+
+```c++
+void FND_init(PinName_t *pinFND);
+```
+
+**Parameters**
+
+* **pinFND**: Array of 8 PinName_t values for the FND segment pins.
+
+
+**Example code**
+
+```c++
+PinName_t pinFND[8] = {
+    PB_0, PB_1, PB_2, PB_3,
+    PB_4, PB_5, PB_6, PB_7
+};
+
+FND_init(pinFND);
+```
+
+
+
+### FND_select_init\(\)
+Initializes the GPIO pins used to select the FND digits.
+
+```c++
+void FND_select_init(PinName_t *selectFND);
+```
+
+**Parameters**
+
+* **selectFND**: Array of 4 PinName_t values for the FND selection pins.
+
+
+**Example code**
+
+```c++
+PinName_t selectFND[4] = {
+    PA_10, PA_11, PC_4, PC_3
+};
+
+FND_select_init(selectFND);
+```
+
+
+
+### FND_display\(\)
+Displays a number on the selected FND using the corresponding segment pattern stored in `numberFND`.
+
+```c++
+void FND_display(uint8_t num);
+```
+
+**Parameters**
+
+* **num**: Index of the number pattern to display. The current numberFND array provides patterns for 0 to 9, decimal point, and blank.
+
+
+**Example code**
+
+```c++
+FND_display(5);
+```
+
+
+
+### FND_select\(\)
+Selects one FND digit from the four available FND selection pins.
+
+```c++
+void FND_select(uint8_t digit);
+```
+
+**Parameters**
+
+* **digit**: FND digit selection number from 0 to 3.
+
+
+**Example code**
+
+```c++
+FND_select(0);
+FND_display(5);
+```
+
+ 
+
+
+------
+
+
+
+## LAB Name
+
+### Header File
+
+ `#include "ecGPIO.h"`
+
+
+```c++
+
+```
+
+
+
+### Function Name \(\)
+Function description
+
+```c++
 
 ```
 
 **Parameters**
 
-* p1
-* p2
+* **p1**: 
+
 
 **Example code**
 
-```text
+```c++
 
 ```
