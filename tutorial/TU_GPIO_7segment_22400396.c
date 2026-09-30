@@ -1,3 +1,13 @@
+/*----------------------------------------------------------------\
+@ Embedded Controller by Young-Keun Kim - Handong Global University
+Author           : [Seoyoon Shin 22400396]
+Created          : 05-03-2021
+Modified         : 09-22-2026
+Language/ver     : C++ in VS Code
+
+Description      : Tutorial - GPIO 7-segment
+/----------------------------------------------------------------*/
+
 #include "ecRCC2.h"
 #include "ecGPIO2.h"
 
