@@ -1,11 +1,11 @@
 /*----------------------------------------------------------------\
 @ Embedded Controller by Young-Keun Kim - Handong Global University
-Author           : [Seoyoon Shin]
+Author           : Seoyoon Shin - 22400396
 Created          : 05-03-2021
 Modified         : 09-29-2026
 Language/ver     : C++ in VS Code
 
-Description      : Tutorial - [Your Description GOES HERE !!] 
+Description      : PreLAB - EXTI
 /----------------------------------------------------------------*/
 
 

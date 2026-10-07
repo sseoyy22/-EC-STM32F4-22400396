@@ -10,9 +10,10 @@ Description      : Tutorial - SysTick
 
 
 #include "stm32f411xe.h"
-#include "ecRCC2.h"
-#include "ecGPIO2.h"
-#include "ecSysTick2.h"  // < --  added !!!!
+// #include "ecRCC2.h"
+// #include "ecGPIO2.h"
+// #include "ecSysTick2.h"  // < --  added !!!!
+#include "ecSTM32F4v2.h"
 
 #define LED_JK PB_12  // LED for Eval Board	JKIT
 
@@ -22,7 +23,12 @@ void setup(void)
     SysTick_init(); 
     GPIO_init(LED_JK, OUTPUT);       // LED for Eval Board	JKIT    
 }
+// 위 내용이 "ecSTM32F4v2.h" 라이브러리에 MCU_init에 default로 정의되어 있음
+// void setup() {
 
+//     MCU_init();
+
+// }
 
 int main(void) {	    
 	setup();

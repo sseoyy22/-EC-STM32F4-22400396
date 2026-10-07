@@ -70,7 +70,7 @@ typedef enum {
     PB_14 = 0x1E,
     PB_15 = 0x1F,
 
-    PC_0  = 0x20,
+    PC_0  = 0x20,  
     PC_1  = 0x21,
     PC_2  = 0x22,
     PC_3  = 0x23,
